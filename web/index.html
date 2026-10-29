@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreqHub IC-R6 Interface</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>FreqHub</h1>
+        <div class="subtitle">IC-R6 Interface Simulator</div>
+
+        <div class="card">
+            <label>FREQUENCY</label>
+            <div id="freq-display" class="freq-display" onclick="changeFrequency()">118.200000 MHz</div>
+            
+            <label>MODE</label>
+            <div class="mode-selector">
+                <button class="mode-btn" onclick="setMode('AM')">AM</button>
+                <button class="mode-btn" onclick="setMode('FM')">FM</button>
+                <button class="mode-btn" onclick="setMode('WFM')">WFM</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <label>SIGNAL STRENGTH</label>
+            <div id="signal-meter" class="meter-bar">████████░░</div>
+            
+            <div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <label>SQUELCH STATE</label>
+                <span id="sql-badge" class="sql-badge sql-closed">SQL CLOSED</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="control-row">
+                <label>Squelch Level: <span id="sql-val">45</span></label>
+                <input type="range" id="sql-slider" min="0" max="255" value="45" oninput="updateSquelch(this.value)">
+            </div>
+            <div class="control-row">
+                <label>Volume: <span id="vol-val">80</span></label>
+                <input type="range" id="vol-slider" min="0" max="255" value="80" disabled>
+            </div>
+        </div>
+
+        <div class="status-footer">
+            Connection: <span id="conn-status" style="color: #ff5252;">DISCONNECTED</span>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
